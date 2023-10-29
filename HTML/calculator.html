@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<style>
+    body {
+        background-color: lightgray;
+    }
+
+    .container {
+        width: 420px;
+        height: 360px;
+        margin-left: 20%;
+        margin-top: 7%;
+
+    }
+
+    input[type="button"] {
+        width: 100%;
+        padding: 20px 30px;
+        background-color: rgba(0, 0, 0, 0.796);
+        color: white;
+        font-size: 24px;
+        outline: rgba(0, 0, 0, 0.834);
+        border: 2px solid rgba(0, 0, 0, 0.834);
+        cursor: pointer;
+    }
+
+    input[type="button"]:hover {
+        background-color: black;
+    }
+
+    #result {
+        padding: 20px 30px;
+        font-size: 24px;
+        border: none;
+        border: 2px solid white;
+        outline: white;
+
+    }
+     tr,
+    td {
+        padding: 0px;
+
+    }
+</style>
+
+<body>
+
+    <div class="container">
+
+        <table id="calculator">
+            <tr>
+                <td colspan="3" id="input-box">
+                    <input type="text" id="result">
+                </td>
+                <td class="acbutton"><input type="button" value="AC"
+                        style="background-color: darkcyan;border:2px solid darkcyan; outline: darkcyan;"></td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="9"></td>
+                <td><input type="button" value="8"></td>
+                <td><input type="button" value="7"></td>
+                <td><input type="button" value="+"
+                        style="background-color: gray;background-color: gray;border:2px solid gray; outline: gray;">
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="button" value="4"></td>
+                <td><input type="button" value="5"></td>
+                <td><input type="button" value="6"></td>
+                <td><input type="button" value="-"
+                        style="background-color: gray;background-color: gray;border:2px solid gray; outline: gray;">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1"></td>
+                <td><input type="button" value="2"></td>
+                <td><input type="button" value="3"></td>
+                <td><input type="button" value="/"
+                        style="background-color: gray;background-color: gray;border:2px solid gray; outline: gray;">
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="."></td>
+                <td><input type="button" value="0"></td>
+                <td><input type="button" value="="></td>
+                <td><input type="button" value="*"
+                        style="background-color: gray;background-color: gray;border:2px solid gray; outline: gray;">
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const result = document.getElementById('result');
+            const buttons = document.querySelectorAll('input[type="button"]');
+            let currentInput = '';
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const value = button.value;
+
+                    if (value === 'AC') {
+                        currentInput = '';
+                    } else if (value === '=') {
+                        try {
+                            currentInput = eval(currentInput);
+                        } catch (error) {
+                            currentInput = 'Error';
+                        }
+                    } else {
+                        currentInput += value;
+                    }
+
+                    result.value = currentInput;
+                });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
